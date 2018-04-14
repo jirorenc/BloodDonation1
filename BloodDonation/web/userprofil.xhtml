@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>JSF &amp; JPA</title>
+</h:head>
+<h:body>
+    <h:form id="form">
+        <h:dataTable id="USERLOGİNINFOMODEL" value="#{userloginAndProfil.userLoginInfoModelList}" var="myUserLoginInfoModel"
+                     captionStyle="font-size:20px" styleClass="userlogininfomodel-table"
+                     headerClass="userlogininfomodel-table-header"
+                     border="1"
+                     rowClasses="userlogininfomodel-table-oddRow,userlogininfomodel-table-evenRow">
+
+            <h:column>
+                <h3> #{myUserLoginInfoModel.name} #{myUserLoginInfoModel.surname} </h3>
+                <h:outputText value="#{userloginAndProfil.durum}" style="color: red"/>
+                <br></br>
+                <h:outputText value="Username: "/>
+                #{myUserLoginInfoModel.userName}
+                <br></br>
+                <h:outputText value="Phonenumber: "/>
+                #{myUserLoginInfoModel.phoneNumber}
+                <br></br>
+                <h:outputText value="E-mail: "/>
+                #{myUserLoginInfoModel.email}
+                <br></br>
+                <h:outputText value="Adress ;  "/>
+                <h:outputText value=" Mah: "/>
+                #{myUserLoginInfoModel.mah}
+                <h:outputText value=" Cd/Sk: "/>
+                #{myUserLoginInfoModel.cd_sk}
+                <h:outputText value=" AprtNo: "/>
+                #{myUserLoginInfoModel.aprtno}
+                <br></br>
+                <h:outputText value=" İlçe/Semt:  "/>
+                #{myUserLoginInfoModel.county}
+                <br></br>
+                <h:outputText value=" Şehir:"/>
+                #{myUserLoginInfoModel.city}
+                <br></br>
+                <h:outputText value="Blood-Group: "/>
+                #{myUserLoginInfoModel.bloodGroup}
+            </h:column>
+            <h:column>
+                <h:outputText value="Username:"/>
+                <h:inputText id="username1" value="#{userloginAndProfil.userName}"  validatorMessage="6 Karakterden Az Ya Da 25 Karakterden Fazla Girdiniz!" >
+                    <f:validateLength minimum="3" maximum="25"/>
+                    <f:validateLength minimum="0"/>
+                </h:inputText>
+                <h:message for="username1" style="color: red"/>
+
+                <h:outputText value="Name:"/>
+                <h:inputText id="name1" value="#{userloginAndProfil.name}" validatorMessage="3 Karakterden Az Ya Da 25 Karakterden Fazla Girdiniz!" >
+                    <f:validateLength minimum="3" maximum="25"/>
+                    <f:validateLength minimum="0"/>
+                </h:inputText>
+                <h:message for="name1" style="color: red"/>
+
+                <h:outputText value="Surname:"/>
+                <h:inputText id="surname1" value="#{userloginAndProfil.surname}"  validatorMessage="2 Karakterden Az Ya Da 25 Karakterden Fazla Girdiniz!" >
+                    <f:validateLength minimum="2" maximum="25"/>
+                    <f:validateLength minimum="0"/>
+                </h:inputText>
+                <h:message for="surname1" style="color: red"/>
+
+                <h:outputText value="Phonenumber:"/>
+                <h:inputText id="phonenumber1" value="#{userloginAndProfil.phoneNumber}"  validatorMessage="Doğru telfon numarası giriniz" >
+                    <f:validateLength minimum="11" maximum="11"/>
+                    <f:validateLength minimum="0"/>
+                </h:inputText>
+                <h:message for="phonenumber1" style="color: red"/>
+
+                <h:outputText value="E-mail:"/>
+                <h:inputText id="email1" value="#{userloginAndProfil.email}"  validatorMessage="eçersiz E-Posta Adresi!" >
+                    <f:validateRegex pattern="^[A-Za-z0-9-+]+(.[A-Za-z0-9+-])*@[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$"/>
+                    <f:validateLength minimum="0"/>
+                </h:inputText>
+                <h:message for="email1" style="color: red"/>
+
+                <h:outputText value="Adress ; "/>
+                <h:panelGrid columns="3" id="container1">
+                    <h:outputText value=" Mah: "/>
+                    <h:inputText id="mah1" value="#{userloginAndProfil.mah}" validatorMessage="Adresinizi eksik girdiniz" >
+                        <f:validateLength minimum="2" maximum="50"/>
+                        <f:validateLength minimum="0"/>
+                    </h:inputText>
+                    <h:message for="mah1" style="color: red"/>
+                    <h:outputText value=" Cd/Sk: "/>
+                    <h:inputText id="cdsk1" value="#{userloginAndProfil.cd_sk}"  validatorMessage="Adresinizi eksik girdiniz" >
+                        <f:validateLength minimum="2" maximum="50"/>
+                        <f:validateLength minimum="0"/>
+                    </h:inputText>
+                    <h:message for="cdsk1" style="color: red"/>
+                    <h:outputText value=" AprtNo: "/>
+                    <h:inputText id="aprtno1" value="#{userloginAndProfil.aprtno}"   validatorMessage="Adresinizi eksik girdiniz" >
+                        <f:validateLength minimum="1" maximum="50"/>
+                        <f:validateLength minimum="0"/>
+                    </h:inputText>
+                    <h:message for="aprtno1" style="color: red"/>
+                    <h:outputText value=" İlçe/Semt: "/>
+                    <h:inputText id="county1" value="#{userloginAndProfil.county}"  validatorMessage="Adresinizi eksik girdiniz" >
+                        <f:validateLength minimum="1" maximum="50"/>
+                        <f:validateLength minimum="0"/>
+                    </h:inputText>
+                    <h:message for="county1" style="color: red"/>
+                    <h:outputText value=" Şehir: "/>
+                    <h:inputText id="city1" value="#{userloginAndProfil.city}"   validatorMessage="Adresinizi eksik girdiniz" >
+                        <f:validateLength minimum="2" maximum="50"/>
+                        <f:validateLength minimum="0"/>
+                    </h:inputText>
+                    <h:message for="city1" style="color: red"/>
+                </h:panelGrid>
+                <h:outputText value="Blood-Group:"/>
+                <h:selectOneRadio id="blood1" value="#{userloginAndProfil.bloodGroup}"  validatorMessage="Kangrubunuzu seçiniz" >
+                    <f:selectItem itemValue="A RH+" itemLabel="A RH+" />
+                    <f:selectItem itemValue="A RH-" itemLabel="A RH-" />
+                    <f:selectItem itemValue="B RH+" itemLabel="B RH+" />
+                    <f:selectItem itemValue="B RH-" itemLabel="B RH-" />
+                    <f:selectItem itemValue="0 RH+" itemLabel="0 RH+" />
+                    <f:selectItem itemValue="0 RH-" itemLabel="0 RH-" />
+                    <f:selectItem itemValue="AB RH+" itemLabel="AB RH+" />
+                    <f:selectItem itemValue="AB RH-" itemLabel="AB RH-" />
+                </h:selectOneRadio>
+                <h:message for="blood1" style="color: red"/>
+                    <h:commandButton value="Guncelle" action="#{userloginAndProfil.updataUser(myUserLoginInfoModel.id)}" />
+                    <h:commandButton value="Bilgilerimi sil" action="#{userloginAndProfil.pasifUserinfo(myUserLoginInfoModel.id)}" immediate="true" />
+                    <h:commandButton value="Şifremi değiştir" action="changepassword" immediate="true" />
+            </h:column>
+
+        </h:dataTable>
+
+
+    </h:form>
+
+</h:body>
+</html>

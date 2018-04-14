@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>JSF &amp; JPA</title>
+</h:head>
+<h:body>
+
+
+    <h:form id="form">
+
+        <h3>Login</h3>
+        <h:outputText value="#{userloginAndProfil.respons} " style="color: red" />
+        <h:panelGrid columns="3" >
+            <h:outputText value="Username:"/>
+            <h:inputText id="username" value="#{userloginAndProfil.userName}" validatorMessage="3 Karakterden Az Ya Da 25 Karakterden Fazla Girdiniz!" >
+                <f:validateLength minimum="3" maximum="25"/>
+            </h:inputText>
+            <h:message for="username" style="color: red"/>
+
+            <h:outputText value="Password:"/>
+            <h:inputSecret id="passwordhash" value="#{userloginAndProfil.passwordhash}" validatorMessage="6 Karakterden Az Ya Da 25 Karakterden Fazla Girdiniz!" >
+                <f:validateLength minimum="6" maximum="25"/>
+            </h:inputSecret>
+            <h:message for="passwordhash" style="color: red"/>
+
+
+        </h:panelGrid>
+        <p>
+            <h:commandButton id="login" value="Login" action="#{userloginAndProfil.control}">
+            </h:commandButton>
+            <br></br>
+        </p>
+        <h:commandLink value="Sign Up" action="signup" immediate="true"/><h:outputText value="&#160;" /><h:outputText value="&#160;" /><h:outputText value="&#160;" />
+        <h:commandLink value="Forgot my password" action="changepassword" immediate="true"/>
+    </h:form>
+
+</h:body>
+</html>

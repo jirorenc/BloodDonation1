@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>JSF &amp; JPA</title>
+</h:head>
+<h:body>
+
+
+    <h:form id="form">
+
+        <h3>Sign up</h3>
+        <h:panelGrid columns="3" border="1">
+            <h:outputText value="Username:"/>
+            <h:inputText id="username" value="#{userSignAndSeacrh.userName}" validatorMessage="6 Karakterden Az Ya Da 25 Karakterden Fazla Girdiniz!" >
+                <f:validateLength minimum="3" maximum="25"/>
+            </h:inputText>
+            <h:message for="username" style="color: red"/>
+
+            <h:outputText value="Password:"/>
+            <h:inputSecret id="passwordhash" value="#{userSignAndSeacrh.passwordhash}" validatorMessage="6 Karakterden Az Ya Da 25 Karakterden Fazla Girdiniz!" >
+                <f:validateLength minimum="6" maximum="25"/>
+            </h:inputSecret>
+            <h:message for="passwordhash" style="color: red"/>
+
+            <h:outputText value="Name:"/>
+            <h:inputText id="name" value="#{userSignAndSeacrh.name}" validatorMessage="3 Karakterden Az Ya Da 25 Karakterden Fazla Girdiniz!" >
+                <f:validateLength minimum="3" maximum="25"/>
+            </h:inputText>
+            <h:message for="name" style="color: red"/>
+
+            <h:outputText value="Surname:"/>
+            <h:inputText id="surname" value="#{userSignAndSeacrh.surname}" validatorMessage="2 Karakterden Az Ya Da 25 Karakterden Fazla Girdiniz!" >
+                <f:validateLength minimum="2" maximum="25"/>
+            </h:inputText>
+            <h:message for="surname" style="color: red"/>
+
+            <h:outputText value="Phonenumber:"/>
+            <h:inputText id="phonenumber" value="#{userSignAndSeacrh.phoneNumber}" validatorMessage="Doğru telfon numarası giriniz" >
+                <f:validateLength minimum="11" maximum="11"/>
+            </h:inputText>
+            <h:message for="phonenumber" style="color: red"/>
+
+            <h:outputText value="E-mail:"/>
+            <h:inputText id="email" value="#{userSignAndSeacrh.email}" validatorMessage="eçersiz E-Posta Adresi!" >
+                <f:validateRegex pattern="^[A-Za-z0-9-+]+(.[A-Za-z0-9+-])*@[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$"/>
+            </h:inputText>
+            <h:message for="email" style="color: red"/>
+
+            <h:outputText value="Adress ; "/>
+            <h:panelGrid columns="3" id="container">
+                <h:outputText value=" Mah: "/>
+                <h:inputText id="mah" value="#{userSignAndSeacrh.mah}" validatorMessage="Adresinizi eksik girdiniz" >
+                    <f:validateLength minimum="2" maximum="50"/>
+                </h:inputText>
+                <h:message for="mah" style="color: red"/>
+                <h:outputText value=" Cd/Sk: "/>
+                <h:inputText id="cdsk" value="#{userSignAndSeacrh.cd_sk}" validatorMessage="Adresinizi eksik girdiniz" >
+                    <f:validateLength minimum="2" maximum="50"/>
+                </h:inputText>
+                <h:message for="cdsk" style="color: red"/>
+                <h:outputText value=" AprtNo: "/>
+                <h:inputText id="aprtno" value="#{userSignAndSeacrh.aprtno}" validatorMessage="Adresinizi eksik girdiniz" >
+                    <f:validateLength minimum="1" maximum="50"/>
+                </h:inputText>
+                <h:message for="aprtno" style="color: red"/>
+                <h:outputText value=" İlçe/Semt: "/>
+                <h:inputText id="county" value="#{userSignAndSeacrh.county}" validatorMessage="Adresinizi eksik girdiniz" >
+                    <f:validateLength minimum="1" maximum="50"/>
+                </h:inputText>
+                <h:message for="county" style="color: red"/>
+                <h:outputText value=" Şehir: "/>
+                <h:inputText id="city" value="#{userSignAndSeacrh.city}" validatorMessage="Adresinizi eksik girdiniz" >
+                    <f:validateLength minimum="2" maximum="50"/>
+                </h:inputText>
+                <h:message for="city" style="color: red"/>
+            </h:panelGrid>
+            <h:message for="container" style="color: red"/>
+
+
+            <h:outputText value="Blood-Group:"/>
+            <h:selectOneRadio id="blood" value="#{userSignAndSeacrh.bloodGroup}" validatorMessage="Kangrubunuzu seçiniz" >
+                <f:selectItem itemValue="A RH+" itemLabel="A RH+" />
+                <f:selectItem itemValue="A RH-" itemLabel="A RH-" />
+                <f:selectItem itemValue="B RH+" itemLabel="B RH+" />
+                <f:selectItem itemValue="B RH-" itemLabel="B RH-" />
+                <f:selectItem itemValue="0 RH+" itemLabel="0 RH+" />
+                <f:selectItem itemValue="0 RH-" itemLabel="0 RH-" />
+                <f:selectItem itemValue="AB RH+" itemLabel="AB RH+" />
+                <f:selectItem itemValue="AB RH-" itemLabel="AB RH-" />
+            </h:selectOneRadio>
+            <h:message for="blood" style="color: red"/>
+
+        </h:panelGrid>
+        <p>
+            <h:commandButton value="Add" action="#{userSignAndSeacrh.addUser}"/>
+        </p>
+
+    </h:form>
+
+</h:body>
+</html>

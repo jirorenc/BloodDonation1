@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>JSF &amp; JPA</title>
+</h:head>
+<h:body>
+    <h:form id="form">
+     <h4>Main page</h4>
+            <h:commandLink value="Sign Up" action="signup" immediate="true"/>
+        <h:outputText value="&#160;" /><h:outputText value="&#160;" /><h:outputText value="&#160;" />
+        <h:commandLink value="Login" action="login" immediate="true"/>
+
+        <h:panelGrid columns="3" cellspacing="10" padding="10" style="alignment: right">
+            <h:panelGroup layout="block" id="container" styleClass="someClass">
+                <h:outputText value="Kan bağışlarını aramak için formu doldunurunuz" />
+                <br>
+                </br>
+                <h:outputText style="padding: 10px"  value="Aradığınız kan gurubu:"/>
+                <h:selectOneRadio id="blood" value="#{userSignAndSeacrh.bloodGroup}" style="padding: 10px" requiredMessage="Aradığınız kan grubunu seçiniz!!!">
+                    <f:selectItem itemValue="A RH+" itemLabel="A RH+" />
+                    <f:selectItem itemValue="A RH-" itemLabel="A RH-" />
+                    <f:selectItem itemValue="B RH+" itemLabel="B RH+" />
+                    <f:selectItem itemValue="B RH-" itemLabel="B RH-" />
+                    <f:selectItem itemValue="0 RH+" itemLabel="0 RH+" />
+                    <f:selectItem itemValue="0 RH-" itemLabel="0 RH-" />
+                    <f:selectItem itemValue="AB RH+" itemLabel="AB RH+" />
+                    <f:selectItem itemValue="AB RH-" itemLabel="AB RH-" />
+                    <f:validateBean disabled="false"/>
+                </h:selectOneRadio>
+                <h:outputText value="Adress ; "/>
+                <h:panelGrid columns="3" id="container2">
+                    <h:outputText value=" Mah: "/>
+                    <h:inputText id="mah" value="#{userSignAndSeacrh.mah}" validatorMessage="Adresinizi eksik girdiniz" >
+                        <f:validateLength minimum="2" maximum="50"/>
+                    </h:inputText>
+                    <h:message for="mah" style="color: red"/>
+                    <h:outputText value=" İlçe/Semt: "/>
+                    <h:inputText id="county" value="#{userSignAndSeacrh.county}" validatorMessage="Adresinizi eksik girdiniz" >
+                        <f:validateLength minimum="1" maximum="50"/>
+                    </h:inputText>
+                    <h:message for="county" style="color: red"/>
+                    <h:outputText value=" Şehir: "/>
+                    <h:inputText id="city" value="#{userSignAndSeacrh.city}" validatorMessage="Adresinizi eksik girdiniz" >
+                        <f:validateLength minimum="2" maximum="50"/>
+                    </h:inputText>
+                    <h:message for="city" style="color: red"/>
+                </h:panelGrid>
+                <h:message for="container" style="color: red"/>
+                <br>
+
+                </br>
+                <h:commandButton value="Aramayı başlat" style="padding: 10px">
+                    <h:dataTable id="USERLOGİNINFOMODEL" value="#{userSignAndSeacrh.userLoginInfoModelList}" var="myUserLoginInfoModel"
+                                 captionStyle="font-size:20px" styleClass="userlogininfomodel-table"
+                                 headerClass="userlogininfomodel-table-header"
+                                 border="1"
+                                 rowClasses="userlogininfomodel-table-oddRow,userlogininfomodel-table-evenRow">
+
+                        <f:facet name="caption">UserLoginInfoModelList</f:facet>
+                        <h:column>
+                            <f:facet name="header">name surname</f:facet>
+                            <h:commandLink value=" #{myUserLoginInfoModel.name} #{myUserLoginInfoModel.surname}" action="#{userSignAndSeacrh.updataUser(myUserLoginInfoModel.id)}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">address</f:facet>
+                            <h:outputText value=" Mah: "/>
+                            #{myUserLoginInfoModel.mah}
+                            <h:outputText value=" Cd/Sk: "/>
+                            #{myUserLoginInfoModel.cd_sk}
+                            <h:outputText value=" AprtNo: "/>
+                            #{myUserLoginInfoModel.aprtno}
+                            <h:outputText value=" Sehir: "/>
+                            #{myUserLoginInfoModel.city}
+                            <h:outputText value=" İlçe: "/>
+                            #{myUserLoginInfoModel.county}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">bloodGroup</f:facet>
+                            #{myUserLoginInfoModel.bloodGroup}
+                        </h:column>
+                    </h:dataTable>
+
+                </h:commandButton>
+            </h:panelGroup>
+
+            <h:panelGroup layout="block" id="container1" styleClass="someClass">
+
+            </h:panelGroup>
+
+        </h:panelGrid>
+
+        <br>
+        </br>
+
+    </h:form>
+
+</h:body>
+</html>
